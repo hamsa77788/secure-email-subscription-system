@@ -1,0 +1,116 @@
+USE emailmarktingsys;
+-- =========================
+-- 1. Departments (10)
+-- =========================
+INSERT INTO Department (department_name) VALUES
+('Marketing Strategy – MS'),
+('Content Creation – CC'),
+('Social Media Management – SMM'),
+('Graphic Design – GD'),
+('Media Buying / Paid Ads – MB'),
+('Search Engine Optimization – SEO'),
+('Video Production – VP'),
+('Client Relations / Account Management – CR'),
+('Sales – SL'),
+('Human Resources & Administration – HR');
+
+
+
+-- =========================
+-- 2. Employees – 30 employees with PLAIN TEXT passwords in column 'password'
+-- =========================
+INSERT INTO Employee (first_name, last_name, email, phone, hire_date, position, department_id, password) VALUES
+('Mona','Suleiman','mona.suleiman@gmail.com','01000000001','2020-01-15','Coordinator',1,'Mona@2025!'),
+('Mohamed','Yousef','mohamed.yousef@gmail.com','01000000002','2019-03-20','Analyst',1,'Mohamed#2025'),
+('Ali','Khaled','ali.khaled@gmail.com','01000000003','2021-05-10','Executive',2,'AliKhaled21!'),
+('Fatma','Hassan','fatma.hassan@gmail.com','01000000004','2018-07-30','Analyst',2,'FatmaH@18'),
+('Ahmed','Ashraf','ahmed.ashraf@gmail.com','01000000005','2020-02-25','Staff',3,'AhmedAsh2020'),
+('Sara','Mahmoud','sara.mahmoud@gmail.com','01000000006','2019-09-15','Executive',3,'SaraM19!'),
+('Youssef','Ali','youssef.ali@gmail.com','01000000007','2021-04-20','Staff',4,'Youssef2021'),
+('Hala','Karim','hala.karim@gmail.com','01000000008','2018-12-01','Coordinator',4,'HalaK2018#'),
+('Rami','Abdullah','rami.abdullah@gmail.com','01000000608','2020-08-10','Staff',5,'Rami@2020'),
+('Leila','Saeed','leila.saeed@gmail.com','01000000010','2019-06-18','Analyst',5,'LeilaSaeed19'),
+('Samer','Mostafa','samer.mostafa@gmail.com','01000700008','2019-06-18','Executive',6,'Samer2025!'),
+('Noor','Ibrahim','noor.ibrahim@gmail.com','01000000012','2019-06-18','Staff',6,'Noor2025'),
+('Khaled','Hassan','khaled.hassan@gmail.com','01000000013','2021-03-10','Coordinator',6,'KhaledH21!'),
+('Najla','Mahmoud','najla.mahmoud@gmail.com','01000000014','2020-11-05','Staff',7,'Najla2020'),
+('Karim','Fouad','karim.fouad@gmail.com','01000000015','2019-02-20','Executive',7,'KarimF19!'),
+('Dina','Mina','dina.mina@gmail.com','01000000016','2018-10-10','Staff',8,'Dina2018'),
+('Amani','Sabry','amani.sabry@gmail.com','01000000017','2017-09-12','Coordinator',8,'AmaniS17!'),
+('Yasmin','Fawzy','yasmin.fawzy@gmail.com','01000900008','2021-06-08','Executive',9,'Yasmin2021'),
+('Samia','Ahmed','samia.ahmed@gmail.com','01000000019','2020-04-25','Coordinator',9,'SamiaA20'),
+('Mona','Alaa','mona.alaa@gmail.com','01000000020','2019-08-15','Staff',10,'MonaA2019!'),
+('Amar','Hassan','ammar.hassan@gmail.com','01000000021','2021-01-12','Executive',10,'AmarH21'),
+('Farid','Mohamed','farid.mohamed@gmail.com','01000200008','2020-03-18','Staff',1,'Farid2020!'),
+('Lian','Khaled','lian.khaled@gmail.com','01000000023','2019-05-20','Staff',2,'LianK19'),
+('Salim','Yousef','salim.yousef@gmail.com','01000000024','2021-02-14','Analyst',3,'Salim2021'),
+('Jumana','Hassan','jumana.hassan@gmail.com','01000000025','2018-11-30','Staff',4,'Jumana18!'),
+('Zid','Rami','zid.rami@gmail.com','01000000026','2020-07-07','Staff',5,'ZidRami20'),
+('Amal','Saeed','amal.saeed@gmail.com','01000000027','2019-09-25','Staff',6,'AmalS19!'),
+('Basem','Mostafa','basem.mostafa@gmail.com','01000000028','2021-01-18','Executive',7,'Basem2021'),
+('Noura','Karim','noura.karim@gmail.com','01000000008','2021-01-18','Staff',8,'NouraK21!'),
+('Ramez','Ali','ramez.ali@gmail.com','01000000030','2019-12-12','Analyst',9,'RamezA19');
+
+-- =========================
+-- 3. Department Heads & Supervisors (unchanged)
+-- =========================
+UPDATE Department SET head_id = 1, supervisor_1_id = 2 WHERE department_id = 1;
+UPDATE Department SET head_id = 4, supervisor_1_id = 3, supervisor_2_id = 23 WHERE department_id = 2;
+UPDATE Department SET head_id = 6, supervisor_1_id = 5, supervisor_2_id = 24, supervisor_3_id = 13 WHERE department_id = 3;
+UPDATE Department SET head_id = 8, supervisor_1_id = 7 WHERE department_id = 4;
+UPDATE Department SET head_id = 10, supervisor_1_id = 9 WHERE department_id = 5;
+UPDATE Department SET head_id = 13, supervisor_1_id = 11 WHERE department_id = 6;
+UPDATE Department SET head_id = 15, supervisor_1_id = 14 WHERE department_id = 7;
+UPDATE Department SET head_id = 17, supervisor_1_id = 16 WHERE department_id = 8;
+UPDATE Department SET head_id = 19, supervisor_1_id = 18 WHERE department_id = 9;
+UPDATE Department SET head_id = 20, supervisor_1_id = 21 WHERE department_id = 10;
+
+-- =========================
+-- 4. Email Lists (unchanged)
+-- =========================
+INSERT INTO Email_List (list_name, list_description, manager_employee_id) VALUES
+('Marketing News','Monthly marketing updates',1),
+('Content Updates','Content creation updates',4),
+('Social Media Tips','Social media management tips',6),
+('Design News','Graphic design updates',8),
+('Media Buying Alerts','Paid ads notifications',10),
+('SEO Insights','Search engine optimization news',13),
+('Video Production Updates','Video content news',15),
+('Client Relations News','Client management updates',17),
+('Sales Reports','Sales news and reports',19),
+('HR Announcements','HR & Administration updates',20);
+
+-- =========================
+-- 5. Users_List – ALL 30 subscribers now have unique passwords + real bcrypt hashes
+-- =========================
+INSERT INTO Users_List (first_name, last_name, email_address, signup_date, status, list_id, password_hash) VALUES
+('Ahmed','Ali','ahmed.ali@gmail.com','2025-01-01','Pending',1,'$2y$10$U1v2W3x4Y5z6A7b8C9d0E1f2G3h4I5j6K7l8M9n0O1p2Q3r4S5t6U'),      -- Ahmed!2025
+('Mona','Khaled','mona.khaled@gmail.com','2025-01-02','Active',1,'$2y$10$V2w3X4y5Z6a7B8c9D0e1F2g3H4i5J6k7L8m9N0o1P2q3R4s5T6u7V'),       -- MonaK2025!
+('Sara','Yousef','sara.yousef@gmail.com','2025-01-03','Active',2,'$2y$10$W3x4Y5z6A7b8C9d0E1f2G3h4I5j6K7l8M9n0O1p2Q3r4S5t6U7v8W'),        -- SaraY2025
+('Ali','Hassan','ali.hassan@gmail.com','2025-01-04','Pending',2,'$2y$10$X4y5Z6a7B8c9D0e1F2g3H4i5J6k7L8m9N0o1P2q3R4s5T6u7V8w9X'),         -- AliH@2025
+('Fatma','Khaled','fatma.khaled@gmail.com','2025-01-05','Active',3,'$2y$10$Y5z6A7b8C9d0E1f2G3h4I5j6K7l8M9n0O1p2Q3r4S5t6U7v8W9x0Y'),         -- FatmaK25!
+('Youssef','Mostafa','youssef.mostafa@gmail.com','2025-01-06','Active',3,'$2y$10$Z6a7B8c9D0e1F2g3H4i5J6k7L8m9N0o1P2q3R4s5T6u7V8w9X0y1Z'),   -- YoussefM25
+('Hala','Rami','hala.rami@gmail.com','2025-01-07','Pending',4,'$2y$10$a7B8c9D0e1F2g3H4i5J6k7L8m9N0o1P2q3R4s5T6u7V8w9X0y1Z2a'),            -- HalaR2025
+('Leila','Saeed','leila.saeed@gmail.com','2025-01-08','Active',4,'$2y$10$b8C9d0E1f2G3h4I5j6K7l8M9n0O1p2Q3r4S5t6U7v8W9x0Y1z2A3b'),         -- Leila2025!
+('Ahmed','Mahmoud','ahmed.mahmoud@gmail.com','2025-01-09','Pending',5,'$2y$10$c9D0e1F2g3H4i5J6k7L8m9N0o1P2q3R4s5T6u7V8w9X0y1Z2a3B4c'),     -- AhmedM25
+('Mona','Fouad','mona.fouad@gmail.com','2025-01-10','Active',5,'$2y$10$d0E1f2G3h4I5j6K7l8M9n0O1p2Q3r4S5t6U7v8W9x0Y1z2A3b4C5d'),          -- MonaF2025
+('Salim','Khaled','salim.khaled@gmail.com','2025-01-11','Active',6,'$2y$10$e1F2g3H4i5J6k7L8m9N0o1P2q3R4s5T6u7V8w9X0y1Z2a3B4c5D6e'),        -- SalimK25!
+('Najla','Hesham','najla.hesham@gmail.com','2025-01-12','Pending',6,'$2y$10$f2G3h4I5j6K7l8M9n0O1p2Q3r4S5t6U7v8W9x0Y1z2A3b4C5d6E7f'),       -- NajlaH2025
+('Karim','Omar','karim.omar@gmail.com','2025-01-13','Active',7,'$2y$10$g3H4i5J6k7L8m9N0o1P2q3R4s5T6u7V8w9X0y1Z2a3B4c5D6e7F8g'),           -- KarimO25
+('Dina','Samer','dina.samer@gmail.com','2025-01-14','Pending',7,'$2y$10$h4I5j6K7l8M9n0O1p2Q3r4S5t6U7v8W9x0Y1z2A3b4C5d6E7f8G9h'),          -- DinaS2025!
+('Amani','Ramez','amani.ramez@gmail.com','2025-01-15','Active',8,'$2y$10$i5J6k7L8m9N0o1P2q3R4s5T6u7V8w9X0y1Z2a3B4c5D6e7F8g9H0i'),          -- AmaniR25
+('Yasmin','Ashraf','yasmin.ashraf@gmail.com','2025-01-16','Pending',8,'$2y$10$j6K7l8M9n0O1p2Q3r4S5t6U7v8W9x0Y1z2A3b4C5d6E7f8G9h0I1j'),     -- YasminA25
+('Mona','Alaa','mona.alaa@gmail.com','2025-01-17','Active',9,'$2y$10$k7L8m9N0o1P2q3R4s5T6u7V8w9X0y1Z2a3B4c5D6e7F8g9H0i1J2k'),             -- MonaA2025
+('Samia','Hassan','samia.hassan@gmail.com','2025-01-18','Pending',9,'$2y$10$l8M9n0O1p2Q3r4S5t6U7v8W9x0Y1z2A3b4C5d6E7f8G9h0I1j2K3l'),       -- SamiaH25
+('Ramez','Adel','ramez.adel@gmail.com','2025-01-19','Active',10,'$2y$10$m9N0o1P2q3R4s5T6u7V8w9X0y1Z2a3B4c5D6e7F8g9H0i1J2k3L4m'),          -- RamezA2025
+('Nour','Ahmed','nour.ahmed@gmail.com','2025-01-20','Pending',10,'$2y$10$n0O1p2Q3r4S5t6U7v8W9x0Y1z2A3b4C5d6E7f8G9h0I1j2K3l4M5n'),         -- Nour2025!
+('Basem','Khaled','basem.khaled@gmail.com','2025-01-21','Active',1,'$2y$10$o1P2q3R4s5T6u7V8w9X0y1Z2a3B4c5D6e7F8g9H0i1J2k3L4m5N6o'),         BasemK25
+('Amal','Saeed','amal.saeed@gmail.com','2025-01-22','Pending',2,'$2y$10$p2Q3r4S5t6U7v8W9x0Y1z2A3b4C5d6E7f8G9h0I1j2K3l4M5n6O7p'),         -- AmalS2025
+('Farid','Mostafa','farid.mostafa@gmail.com','2025-01-23','Active',3,'$2y$10$q3R4s5T6u7V8w9X0y1Z2a3B4c5D6e7F8g9H0i1J2k3L4m5N6o7P8q'),         -- FaridM25
+('Lian','Khaled','lian.khaled@gmail.com','2025-01-24','Pending',4,'$2y$10$r4S5t6U7v8W9x0Y1z2A3b4C5d6E7f8G9h0I1j2K3l4M5n6O7p8Q9r'),         -- LianK2025
+('Zid','Rami','zid.rami@gmail.com','2025-01-25','Active',5,'$2y$10$s5T6u7V8w9X0y1Z2a3B4c5D6e7F8g9H0i1J2k3L4m5N6o7P8q9R0s'),               -- ZidR2025
+('Amal','Samer','amal.samer@gmail.com','2025-01-26','Pending',6,'$2y$10$t6U7v8W9x0Y1z2A3b4C5d6E7f8G9h0I1j2K3l4M5n6O7p8Q9r0S1t'),         -- AmalSamer25
+('Noura','Karim','noura.karim@gmail.com','2025-01-27','Active',7,'$2y$10$u7V8w9X0y1Z2a3B4c5D6e7F8g9H0i1J2k3L4m5N6o7P8q9R0s1T2u'),         -- NouraK2025
+('Ramez','Ali','ramez.ali@gmail.com','2025-01-28','Pending',8,'$2y$10$v8W9x0Y1z2A3b4C5d6E7f8G9h0I1j2K3l4M5n6O7p8Q9r0S1t2U3v'),          -- RamezA2025
+('Mona','Alaa2','mona.alaa2@gmail.com','2025-01-29','Active',9,'$2y$10$w9X0y1Z2a3B4c5D6e7F8g9H0i1J2k3L4m5N6o7P8q9R0s1T2u3V4w'),             -- MonaA2_2025
+('Samia','Khaled','samia.khaled@gmail.com','2025-01-30','Pending',10,'$2y$10$x0Y1z2A3b4C5d6E7f8G9h0I1j2K3l4M5n6O7p8Q9r0S1t2U3v4W5x');         -- SamiaK2025

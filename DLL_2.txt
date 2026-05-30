@@ -1,0 +1,58 @@
+-- Drop & Create Database
+DROP DATABASE IF EXISTS emailmarktingsys;
+CREATE DATABASE emailmarktingsys;
+USE emailmarktingsys;
+
+-- 1. Department Table
+CREATE TABLE Department (
+    department_id INT AUTO_INCREMENT PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- 2. Employee Table → password_hash will store PLAIN TEXT password now
+CREATE TABLE Employee (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    phone VARCHAR(20),
+    hire_date DATE NOT NULL,
+    position VARCHAR(50) NOT NULL,
+    department_id INT NOT NULL,
+    password VARCHAR(255) NOT NULL, -- ← Here we store plain text (e.g. Mona@2025!)
+    FOREIGN KEY (department_id) REFERENCES Department(department_id)
+);
+
+-- 3. Add Head & Supervisors
+ALTER TABLE Department
+ADD head_id INT NULL,
+ADD supervisor_1_id INT NULL,
+ADD supervisor_2_id INT NULL,
+ADD supervisor_3_id INT NULL;
+
+ALTER TABLE Department
+ADD CONSTRAINT fk_dept_head       FOREIGN KEY (head_id)        REFERENCES Employee(employee_id),
+ADD CONSTRAINT fk_supervisor_1   FOREIGN KEY (supervisor_1_id) REFERENCES Employee(employee_id),
+ADD CONSTRAINT fk_supervisor_2   FOREIGN KEY (supervisor_2_id) REFERENCES Employee(employee_id),
+ADD CONSTRAINT fk_supervisor_3   FOREIGN KEY (supervisor_3_id) REFERENCES Employee(employee_id);
+
+-- 4. Email_List Table
+CREATE TABLE Email_List (
+    list_id INT AUTO_INCREMENT PRIMARY KEY,
+    list_name VARCHAR(150) NOT NULL UNIQUE,
+    list_description TEXT,
+    manager_employee_id INT NOT NULL,
+    FOREIGN KEY (manager_employee_id) REFERENCES Employee(employee_id)
+);
+
+CREATE TABLE Users_List (
+    email_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100),
+    email_address VARCHAR(200) NOT NULL UNIQUE,
+    signup_date DATE NOT NULL,
+    status ENUM('Pending', 'Active', 'Unsubscribed') NOT NULL DEFAULT 'Pending',
+    password_hash VARCHAR(255),
+    list_id INT NOT NULL,
+    FOREIGN KEY (list_id) REFERENCES Email_List(list_id)
+);
