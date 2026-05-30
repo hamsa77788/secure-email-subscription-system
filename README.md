@@ -1,4 +1,4 @@
-# Email List Subscription Management System
+# Secured Email List Subscription Management System
 
 ## Overview
 
